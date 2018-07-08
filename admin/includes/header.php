@@ -1,3 +1,6 @@
+<?php ob_start();//Buffers Request, such that it sends all the request at the same time, otherwise PHP sends it side by side
+ ?>
+<?php include "../includes/db.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
