@@ -10,6 +10,7 @@
                                    <th>Tags</th>
                                    <th>Comments</th>
                                    <th>Date</th>
+                                   <th>Delete</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -40,12 +41,30 @@
                                <td><img class='img-responsive' src='../images/{$post_image}'></td>
                                <td>{$post_tags}</td>
                                <td>{$post_comments_count}</td>
-                               <td>{$post_date}</td></tr>
+                               <td>{$post_date}</td>
+                               <td><a href='posts.php?delete={$post_id}'>Delete</a></td></tr>
                     ";
 
                    }
+
          
                     ?>
+                    <?php 
+                   
+                      if(isset($_GET['delete'])){
+                        $del_post_id = $_GET['delete'];
+                    /*************MYSQL query for DELETING that ID from the database******/
+                        $query = "DELETE FROM posts WHERE post_id = {$del_post_id} ";
+                        $del_query = mysqli_query($connection,$query);
+                        header("Location: posts.php");//Refreshes the categories.php page to take effect
+
+                        if(!$del_query){
+                          global $connection;
+                            die("Query Failed".mysqli_error($connection));
+                        }
+                      }
+                
+                   ?>           
                      
 
                                
