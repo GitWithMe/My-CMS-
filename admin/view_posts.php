@@ -35,16 +35,29 @@
                     $post_date = $row['post_date'];
 
                     echo "<tr><td>{$post_id}</td>
-                               <td>{$post_author}</td>
-                               <td>{$post_title}</td>
-                               <td>{$post_cat_id}</td>
-                               <td>{$post_status}</td>
-                               <td><img class='img-responsive' src='../images/{$post_image}'></td>
-                               <td>{$post_tags}</td>
-                               <td>{$post_comments_count}</td>
-                               <td>{$post_date}</td>
-                               <td><a href='posts.php?delete={$post_id}'>Delete</a></td>
-                               <td><a href='posts.php?source=update_post&p_id={$post_id}'>Edit</a></td></tr>
+                          <td>{$post_author}</td>
+                          <td>{$post_title}</td>";
+                    
+                     $query = "SELECT * FROM categories WHERE cat_id = {$post_cat_id}";
+                                $edit_query = mysqli_query($connection,$query);
+
+                                if(!$edit_query){
+                                    die("Query Failed".mysqli_error($connection));
+                                }
+                                while($row = mysqli_fetch_assoc($edit_query)){
+                                     $cat_title = $row['cat_title'];
+                                     $cat_id = $row['cat_id'];    
+   
+                                echo "<td>{$cat_title}</td>";
+                              }
+
+                    echo  "<td>{$post_status}</td>
+                          <td><img class='img-responsive' src='../images/{$post_image}'></td>
+                          <td>{$post_tags}</td>
+                          <td>{$post_comments_count}</td>
+                          <td>{$post_date}</td>
+                          <td><a href='posts.php?delete={$post_id}'>Delete</a></td>
+                          <td><a href='posts.php?source=update_post&p_id={$post_id}'>Edit</a></td></tr>
                     ";
 
                    }

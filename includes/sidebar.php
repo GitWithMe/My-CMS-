@@ -20,7 +20,7 @@
                          
             <?php
                  /******************** Pulling Data from cat_title column into the DOM **********************/
-                  $fetch_cat_title="SELECT * FROM categories LIMIT 3";
+                  $fetch_cat_title="SELECT * FROM categories";
 
                   $result_sidebar = mysqli_query($connection,$fetch_cat_title);
 
@@ -35,8 +35,9 @@
                                 <?php 
                                  while($row = mysqli_fetch_assoc($result_sidebar)){
                                      $cat_title = $row['cat_title'];
+                                     $cat_id = $row['cat_id'];
 
-                                     echo "<li><a href='#'>{$cat_title}</a></li>";
+                                     echo "<li><a href='category.php?category=$cat_id'>{$cat_title}</a></li>";
                                    }
                                
                                 ?>

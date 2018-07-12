@@ -3,7 +3,7 @@
      /***Super Global will have names of the forms*****/      
            $post_title = $_POST['title']; 
            $post_author = $_POST['author']; 
-           $post_cat_id = $_POST['post_cat_id'];
+           $post_cat_id = $_POST['post_category'];
            $post_status = $_POST['post_status'];
            $post_image = $_FILES['image']['name'];
            $post_image_temp = $_FILES['image']['tmp_name'];//We need this to store the chosen image somewhere temprorary
@@ -34,8 +34,29 @@
     <input type="text" class="form-control" name="title">
   </div>
   <div class="form-group">
-    <label for="post_category">Post Category ID</label>
-    <input type="text" class="form-control" name="post_cat_id">
+    <label for="title">Post Category Title</label>
+    <select name="post_category" id="" >
+      
+       <?php
+
+      $query = "SELECT * FROM categories";
+      $select_cat_id = mysqli_query($connection,$query);
+        if(!$select_cat_id){
+          global $connection;
+          die("Query Failed ".mysqli_error($connection));
+        }
+
+      while($row = mysqli_fetch_assoc($select_cat_id)){
+        $cat_id = $row['cat_id'];
+        $cat_title = $row['cat_title'];
+
+        echo "<option value='{$cat_id}'>{$cat_title}</option>";
+
+              }
+
+       ?>
+    </select>
+    
   </div>
   <div class="form-group">
     <label for="title">Post Author</label>
