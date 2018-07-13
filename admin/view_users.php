@@ -9,9 +9,9 @@
                                    <th>Role</th>
                                    <th>E-Mail</th>
                                    <th>Image</th>
-                                   <th>Edit</th>
+                                   <th>Delete</th>
                                   
-                                  <th>Delete</th>
+                                  <th>Edit</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -44,50 +44,28 @@
 
                     echo  "<td>{$user_lastname}</td>
 
-                           <td>{$user_role}</td>";
+                           <td>{$user_role}</td>
+                           <td>{$user_email}</td>
+                           <td><img class='img-responsive' width='50' src='../images/{$user_image}'></td>
+                           <td><a href='users.php?delete={$user_id}'>Delete</a></td>
+                           <td><a href='users.php?source=update_user&u_id={$user_id}'>Edit</a></td></tr>
+                          ";
+                        }
 
-             $query = "SELECT * FROM posts WHERE post_id = $comment_post_id"; 
-             $response_title = mysqli_query($connection,$query);
-
-             if(!$response_title){
-              die("Query Failed ".mysqli_error($connection));
-             } 
-                      while($row = mysqli_fetch_assoc($response_title)) { 
-                        $post_id = $row['post_id'];
-                        $post_title = $row['post_title'];
-
-                       echo "<td><a href='posts.php?p_id=$post_id'>$post_title</a></td>";
-
-
-                  }
-
-                        echo " <td>{$comment_date}</td>
-                          <td><a href='comments.php?approve={$comment_id}'>Approve</a></td>
-                          <td><a href='comments.php?unapprove={$comment_id}'>UnApprove</a></td>
-                          <td><a href='comments.php?delete={$comment_id}'>Delete</a></td></tr>";
-                          
-                    
-
-                   }
-
-         
-                    ?>
-
-
-
+             ?>
                     <?php 
                     
                    //DELETE
                       if(isset($_GET['delete'])){
-                        $del_comment_id = $_GET['delete'];
+                        $del_user_id = $_GET['delete'];
                     /*************MYSQL query for DELETING that ID from the database******/
-                        $query = "DELETE FROM comments WHERE comment_id = {$del_comment_id} ";
-                        $del_query = mysqli_query($connection,$query);
-                        header("Location: comments.php");//Refreshes the categories.php page to take effect
+                        $query = "DELETE FROM users WHERE user_id = {$del_user_id} ";
+                        $del_user = mysqli_query($connection,$query);
+                        header("Location: users.php");//Refreshes the categories.php page to take effect
 
-                        if(!$del_comment_id){
+                        if(!$del_user_id){
                           global $connection;
-                            die("Query Failed".mysqli_error($connection));
+                            die("Query Failed ".mysqli_error($connection));
                         }
                       }
                 

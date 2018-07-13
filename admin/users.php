@@ -24,10 +24,10 @@
                         $source = '';
                      }
                      switch ($source) {
-                         case 'add_posts':
-                             include "includes/add_user.php";
+                         case 'add_users':
+                             include "includes/add_users.php";
                              break;
-                         case 'update_post':
+                         case 'update_user':
                              include "includes/update_user.php";
                              break;    
                          

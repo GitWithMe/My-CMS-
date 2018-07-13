@@ -8,7 +8,7 @@
                                    <th>Status</th>
                                    <th>Image</th>
                                    <th>Tags</th>
-                                   <th>Comments</th>
+                                   
                                    <th>Date</th>
                                    <th>Delete</th>
                                    <th>Edit</th>
@@ -31,7 +31,7 @@
                     $post_status = $row['post_status'];
                     $post_image = $row['post_image'];
                     $post_tags = $row['post_tags'];
-                    $post_comments_count = $row['post_comments_count'];
+                    
                     $post_date = $row['post_date'];
 
                     echo "<tr><td>{$post_id}</td>
@@ -54,7 +54,7 @@
                     echo  "<td>{$post_status}</td>
                           <td><img class='img-responsive' src='../images/{$post_image}'></td>
                           <td>{$post_tags}</td>
-                          <td>{$post_comments_count}</td>
+                          
                           <td>{$post_date}</td>
                           <td><a href='posts.php?delete={$post_id}'>Delete</a></td>
                           <td><a href='posts.php?source=update_post&p_id={$post_id}'>Edit</a></td></tr>

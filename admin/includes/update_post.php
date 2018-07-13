@@ -16,7 +16,7 @@ if(isset($_GET['p_id'])){
                     $post_status = $row['post_status'];
                     $post_image = $row['post_image'];
                     $post_tags = $row['post_tags'];
-                    $post_comments_count = $row['post_comments_count'];
+                    
                     $post_date = $row['post_date'];
                     $post_content = $row['post_content']; 
                  }     
@@ -34,14 +34,14 @@ if(isset($_GET['p_id'])){
            $post_tags = $_POST['post_tags'];
            $post_content = $_POST['post_content'];
            $post_date = date('d-m-y');
-           $post_comments_count = 4;
+           
            move_uploaded_file($post_image_temp, "../images/$post_image"); //Function used to move files from one folder to another
            if(empty($post_image)){
             $query = "SELECT * FROM posts WHERE post_id = $update_post_id";
             $update_image = mysql_query($connection,$query);
            }
 
-      $query = "UPDATE posts SET post_title = '{$post_title}', post_author = '{$post_author}', post_cat_id = '{$post_cat_id}', post_status = '{$post_status}', post_image = '{$post_image}', post_tags = '{$post_tags}', post_content = '{$post_content}', post_date = now(), post_comments_count = '{$post_comments_count}' WHERE post_id = $update_post_id";   
+      $query = "UPDATE posts SET post_title = '{$post_title}', post_author = '{$post_author}', post_cat_id = '{$post_cat_id}', post_status = '{$post_status}', post_image = '{$post_image}', post_tags = '{$post_tags}', post_content = '{$post_content}', post_date = now() WHERE post_id = $update_post_id";   
       
       $updated_post = mysqli_query($connection,$query);
 
@@ -103,11 +103,7 @@ if(isset($_GET['p_id'])){
     <input type="file" name="image" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
    <img width="100" src="../images/<?php echo $post_image; ?>">
    </div>
- <div class="form-group">
-    <label for="post_comments_count">Post Comments Count</label>
-    <input value="<?php echo $post_comments_count; ?>" type="text" class="form-control" name="post_comments_count">
-  </div>
- <div class="form-group">
+  <div class="form-group">
     <label for="post_content">Post Content</label>
     <textarea  class="form-control" name="post_content" id="" cols="30" rows="10" ><?php echo $post_content; ?>
     </textarea>

@@ -10,7 +10,7 @@
            $post_tags = $_POST['post_tags'];
            $post_content = $_POST['post_content'];
            $post_date = date('d-m-y');
-           // $post_comments_count = 4;
+           
 
            move_uploaded_file($post_image_temp, "../images/$post_image"); //Function used to move files from one folder to another
 
@@ -74,11 +74,7 @@
     <label for="exampleInputFile">Post Images</label>
     <input type="file" class="form-control-file" name="image">
    </div>
- <div class="form-group">
-    <label for="post_comments_count">Post Comments</label>
-    <input type="text" class="form-control" name="post_comments_count">
-  </div>
- <div class="form-group">
+  <div class="form-group">
     <label for="post_content">Post Content</label>
     <textarea class="form-control" name="post_content" id="" cols="30" rows="10" ></textarea>
   </div>
