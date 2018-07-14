@@ -52,7 +52,7 @@
                               }
 
                     echo  "<td>{$post_status}</td>
-                          <td><img class='img-responsive' src='../images/{$post_image}'></td>
+                          <td><img class='img-responsive' width = 100 src='../images/{$post_image}'></td>
                           <td>{$post_tags}</td>
                           
                           <td>{$post_date}</td>

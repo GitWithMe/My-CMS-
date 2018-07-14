@@ -22,11 +22,8 @@ if(isset($_POST['login'])){
 	 }
 
 	 //If the entered username and password entered in the form do not match with the username and password present in the database then we should be redirected to the index page
-	 if($username !== $db_username && $password !== $db_password ){
-
-	 	header("Location: ../index.php");
-	 }
-	 else if($username == $db_username && $password == $db_password ){
+	
+	if($username === $db_username && $password === $db_password ){
 
 	 	$_SESSION['username'] = $db_username; //Assigning the value
 	 	$_SESSION['firstname'] = $db_user_firstname;
