@@ -18,15 +18,20 @@
 
                <!-- Login -->
                 <div class="well">
-                    <h4>Blog Search</h4>
-                    <form action="search.php" method="post"> <!-- Perfoms action in search.php -->
-                    <div class="input-group">
-                        <input name="search" type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button name="submit" class="btn btn-default" type="submit">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
+                    <h4>Log in</h4>
+                    <form action="includes/login.php" method="post"> <!-- Perfoms action in search.php -->
+                    <div class="form-group">
+                        <input placeholder="Enter User Name" name="username" type="text" class="form-control">
+                      
+                    </div>
+
+                     <div class="input-group">
+                        <input placeholder="Enter your password" name="password" type="password" class="form-control">
+
+                      <div class="input-group-btn">
+                        <button class="btn btn-primary" name="login" type="submit">Submit</button>
+
+                      </div>  
                     </div>
                 </form>
                     <!-- /.input-group -->

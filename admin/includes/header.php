@@ -1,6 +1,15 @@
 <?php ob_start();//Buffers Request, such that it sends all the request at the same time, otherwise PHP sends it side by side
  ?>
+ <?php session_start() ?>
 <?php include "../includes/db.php" ?>
+<?php 
+//Segegrate between the admin and the subscriber kind of user
+if(!isset($_SESSION['user_role'])){
+    
+        header("Location: ../index.php");
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>My IGN Clone</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
